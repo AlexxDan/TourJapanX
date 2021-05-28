@@ -7,10 +7,13 @@ namespace TourJapanX.Models
 {
     public class Foto
     {
-        [JsonProperty("IDFOTO")]
+        [JsonProperty("idFoto")]
         public int IdFoto { get; set; }
 
-        [JsonProperty("NICKFOTO")]
+        [JsonProperty("nombreFoto")]
         public String NombreFoto { get; set; }
+
+        [JsonProperty("idLugarFoto")]
+        public int idLugar { get; set; }
     }
 }

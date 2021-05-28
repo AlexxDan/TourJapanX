@@ -7,10 +7,10 @@ namespace TourJapanX.Models
 {
    public class Perfectura
     {
-        [JsonProperty("IDPERFECTURA")]
+        [JsonProperty("idPerfectura")]
         public int IdPerfectura { get; set; }
 
-        [JsonProperty("NOMBREPERFECTURA")]
-        public int NombrePerfectura { get; set; }
+        [JsonProperty("nombrePerfectura")]
+        public String NombrePerfectura { get; set; }
     }
 }

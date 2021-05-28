@@ -7,28 +7,26 @@ namespace TourJapanX.Models
 {
     public class Lugar
     {
-        [JsonProperty("IDLUGAR")]
+        [JsonProperty("idLugar")]
         public int IdLugar { get; set; }
 
-        [JsonProperty("NOMBRE")]
+        [JsonProperty("nombreLugar")]
         public String NombreLugar { get; set; }
 
-        [JsonProperty("TIPO")]
+        [JsonProperty("tipoLugar")]
         public String TipoLugar { get; set; }
 
-        [JsonProperty("DESCRIPCION")]
+        [JsonProperty("descripcion")]
         public String Descripcion { get; set; }
 
-        [JsonProperty("COORDENADASX")]
+        [JsonProperty("coordenasX")]
         public String CoordenasX { get; set; }
 
-        [JsonProperty("COORDENADASY")]
+        [JsonProperty("coordenasY")]
         public String CoordenasY { get; set; }
 
-        [JsonProperty("IDPERFECTURA")]
+        [JsonProperty("idPerfecturaLugar")]
         public int IdPerfecturaLugar { get; set; }
 
-        [JsonProperty("Fotos")]
-        public List<Foto> Fotos { get; set; }
     }
 }

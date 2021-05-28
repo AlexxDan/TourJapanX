@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.LugarView"
+             xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.BindingContext>
+                <viewmodels:LugarViewModel/>
+            </StackLayout.BindingContext>
+            <Label Text="Pueba de algo" FontSize="45" TextColor="Blue"/>
+            <Button Text="Cargar lugar 1" HorizontalOptions="FillAndExpand"
+                    Command="{Binding ShowLugar}"/>
+            <Label Text="{Binding Lugar.NombreLugar}" FontSize="20" TextColor="Red"/>
+            <Label Text="{Binding Lugar.TipoLugar}" FontSize="20" TextColor="Blue"/>
+            <Label Text="{Binding Lugar.Descripcion}" FontSize="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

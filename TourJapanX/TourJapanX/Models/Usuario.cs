@@ -7,28 +7,27 @@ namespace TourJapanX.Models
 {
    public class Usuario
     {
-        [JsonProperty("IDUSER")]
+        [JsonProperty("idUser")]
         public int IdUser { get; set; }
 
-        [JsonProperty("NickUser")]
+        [JsonProperty("nickUser")]
         public String NickUser { get; set; }
 
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public String Email { get; set; }
 
-        [JsonProperty("Foto")]
+        [JsonProperty("foto")]
         public String Foto { get; set; }
 
-        [JsonProperty("Password")]
+        [JsonProperty("password")]
         public String Password { get; set; }
 
-        [JsonProperty("Salt")]
+        [JsonProperty("salt")]
         public String Salt { get; set; }
 
-        [JsonProperty("IdRolUsuario")]
+        [JsonProperty("idRolUsuario")]
         public int IdRolUsuario { get; set; }
 
-        [JsonProperty("Favoritos")]
-        public List<Favorito> Favoritos { get; set; }
+       
     }
 }

@@ -2,33 +2,34 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using TourJapanX.Base;
 using TourJapanX.Models;
-using TourJapanX.Repository;
+using TourJapanX.Services;
 
 namespace TourJapanX.ViewModels
 {
-    public class LugaresViewModel:ViewModelBase
+    public class LugaresViewModel : ViewModelBase
     {
-        RepositoriesTourJapan repo;
+        ServiceApi service;
 
         public LugaresViewModel()
         {
-            this.repo = new RepositoriesTourJapan();
-            /*List<Pelicula> pelis = this.repo.GetPelicuals();
-            this.Peliculas = new ObservableCollection<Pelicula>(pelis);*/
+            this.service = new ServiceApi();
+
         }
 
-        private ObservableCollection<Lugar> _Lugares;
+        private ObservableCollection<Lugar> _Lugar;
 
-        public ObservableCollection<Lugar> Lugares
+        public ObservableCollection<Lugar> Lugar
         {
-            get { return this._Lugares; }
+            get { return this._Lugar; }
             set
             {
-                this._Lugares = value;
-                OnPropertyChanged("Lugares");
+                this._Lugar = value;
+                OnPropertyChanged("Lugar");
             }
         }
+
     }
 }
