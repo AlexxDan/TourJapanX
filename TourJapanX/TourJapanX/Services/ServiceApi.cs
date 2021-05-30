@@ -217,5 +217,20 @@ namespace TourJapanX.Services
 
         #endregion
 
+        #region
+        public async Task<Usuario> Login(string email, string password)
+        {
+            String request = "api/Usuario/BuscarUsuarioLogin/" + email;
+            Usuario user = await this.CallAPi<Usuario>(request);
+            
+            //if(user == null)
+            //{
+
+            //}
+            
+            return user;
+        }
+        #endregion
+
     }
 }

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Login"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry Placeholder="Email" x:Name="txtEmail" />
+            <Entry Placeholder="Password" x:Name="txtPassword" />
+            <Button Text="Ingresar" x:Name="btnLogin" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
