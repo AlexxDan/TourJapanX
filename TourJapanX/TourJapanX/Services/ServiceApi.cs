@@ -34,9 +34,7 @@ namespace TourJapanX.Services
 
                 if (repsonse.IsSuccessStatusCode)
                 {
-                    //T data = await repsonse.Content.ReadAsAsync<T>();
-                    //return data;
-
+                    
                     var data = await repsonse.Content.ReadAsStringAsync();
                     T dataformater = JsonConvert.DeserializeObject<T>(data);
                     return dataformater;
@@ -100,6 +98,12 @@ namespace TourJapanX.Services
         #endregion
 
         #region Lugar
+        public async Task<List<Lugar>> GetAllLugaresAsync()
+        {
+            String request = "api/Lugar";
+            List<Lugar> lugares = await this.CallAPi<List<Lugar>>(request);
+            return lugares;
+        }
         public async Task<Lugar> GetLugarAsync(int idlugar)
         {
             String request = "api/Lugar/" + idlugar;

@@ -2,18 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourJapanX.Views.LugarView"
-             xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels">
+             xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels"
+             xmlns:local="clr-namespace:TourJapanX"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
+            , Path=LugarFotoViewModel}">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout.BindingContext>
-                <viewmodels:LugarViewModel/>
-            </StackLayout.BindingContext>
-            <Label Text="Pueba de algo" FontSize="45" TextColor="Blue"/>
-            <Button Text="Cargar lugar 1" HorizontalOptions="FillAndExpand"
-                    Command="{Binding ShowLugar}"/>
-            <Label Text="{Binding Lugar.NombreLugar}" FontSize="20" TextColor="Red"/>
-            <Label Text="{Binding Lugar.TipoLugar}" FontSize="20" TextColor="Blue"/>
-            <Label Text="{Binding Lugar.Descripcion}" FontSize="20"/>
+        <StackLayout >
+            <StackLayout>
+                <Label Text="Pueba de algo" FontSize="45" TextColor="Blue"/>
+                <Label Text="{Binding Lugar.NombreLugar}" FontSize="20" TextColor="Red"/>
+                <Label Text="{Binding Lugar.TipoLugar}" FontSize="20" TextColor="Blue"/>
+                <Label Text="{Binding Lugar.Descripcion}" FontSize="20"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Aqui deberían estar las fotos" TextColor="Fuchsia" FontSize="20"/>
+                <CarouselView ItemsSource="{Binding Fotos}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Image Source="{Binding NombreFoto}" HeightRequest="150"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

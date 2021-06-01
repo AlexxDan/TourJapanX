@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.PerfecturaLugarView"
+             xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels"
+             xmlns:local="clr-namespace:TourJapanX"
+             >
+    <ContentPage.Content>
+        <StackLayout x:Name="stackperfectura" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
+            , Path=PerfecturaLugarViewModel}">
+            <Label Text="Welcome to Xamarin.Forms!"/>
+            <StackLayout>
+                <Picker Title="Seleccione una perfectura"
+                        ItemsSource="{Binding Perfecturas}"
+                        ItemDisplayBinding="{Binding NombrePerfectura}"
+                        FontSize="20"
+                        x:Name="perfecturaSelected"/>
+                <Button Text="Buscar" TextColor="Blue"
+                    CommandParameter="{Binding Source={x:Reference perfecturaSelected},
+                    Path=SelectedItem}" Command="{Binding BindingContext.LugarByPefectura,
+                    Source={x:Reference stackperfectura}}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Listado filtrado" TextColor="Red"/>
+                <ListView ItemsSource="{Binding Lugares}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding NombreLugar}" TextColor="Blue" FontSize="20"/>
+                                    <Label Text="Prueba" TextColor="Red"/>
+                                    <Button HorizontalOptions="End"
+                                        CommandParameter="{Binding .}"
+                                        Text="Detalles" Command="{Binding BindingContext.LugarDetails,
+                                    Source={x:Reference stackperfectura}}"
+                                        />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
