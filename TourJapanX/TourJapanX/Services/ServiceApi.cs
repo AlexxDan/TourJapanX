@@ -20,7 +20,6 @@ namespace TourJapanX.Services
             this.Header = new MediaTypeWithQualityHeaderValue("application/json");
         }
 
-
         #region CallAPI
         private async Task<T> CallAPi<T>(String request)
         {

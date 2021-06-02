@@ -8,21 +8,30 @@
              >
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-             
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="Hola prueba" FontSize="20"/>
-            <ListView ItemsSource="{Binding Lugares}">
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Label Text="Listado de los lugares" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
+           
+            <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding NombreLugar}"/>
-                                <Button HorizontalOptions="End"
-                                        CommandParameter="{Binding .}"
-                                        Text="Detalles" Command="{Binding BindingContext.LugarDetails,
-                                    Source={x:Reference PageScroll}}"
-                                        />
+                            <StackLayout Orientation="Horizontal" Spacing="10" >
+                                <Label Text="{Binding NombreLugar}" HorizontalOptions="Start"
+                                       FontSize="20" Grid.Column="0"/>
+                                <Image Source="detalles.png" HorizontalOptions="End" Grid.Column="1">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer CommandParameter="{Binding .}"
+                                        Command="{Binding BindingContext.LugarDetails,
+                                    Source={x:Reference PageScroll}}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                              
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

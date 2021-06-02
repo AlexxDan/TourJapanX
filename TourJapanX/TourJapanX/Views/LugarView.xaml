@@ -4,28 +4,44 @@
              x:Class="TourJapanX.Views.LugarView"
              xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels"
              xmlns:local="clr-namespace:TourJapanX"
+             x:Name="pagelugar"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
             , Path=LugarFotoViewModel}">
     <ContentPage.Content>
+        <ScrollView>
+            
+       
         <StackLayout >
             <StackLayout>
-                <Label Text="Pueba de algo" FontSize="45" TextColor="Blue"/>
-                <Label Text="{Binding Lugar.NombreLugar}" FontSize="20" TextColor="Red"/>
-                <Label Text="{Binding Lugar.TipoLugar}" FontSize="20" TextColor="Blue"/>
-                <Label Text="{Binding Lugar.Descripcion}" FontSize="20"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Aqui deberían estar las fotos" TextColor="Fuchsia" FontSize="20"/>
-                <CarouselView ItemsSource="{Binding Fotos}">
+
+                <Label Text="{Binding Lugar.NombreLugar}" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
+                <Label Text="{Binding Lugar.TipoLugar,StringFormat='Tipo de lugar : {0}'}" 
+                       FontSize="20" TextColor="Gray" HorizontalOptions="Center"/>
+                <Label Text="{Binding Lugar.Descripcion,StringFormat='Descripción: {0}'}" 
+                       FontSize="20" TextColor="Black" Margin="12,0,10,12"/>
+
+                    <Button Text="Guardar Favorito" FontSize="20" HorizontalOptions="Center" Padding="20" Margin="0,0,0,10"
+                            CommandParameter="{Binding .}" Command="{Binding BindingContext.GuargarFavorito,
+                    Source={x:Reference pagelugar}}"/>
+                </StackLayout>
+                <StackLayout>
+                    <CarouselView ItemsSource="{Binding Fotos}">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Image Source="{Binding NombreFoto}" HeightRequest="150"/>
+                                <Frame BorderColor="DarkGray"
+                                        HeightRequest="250"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start">
+                                    <Image Source="{Binding NombreFoto}" HeightRequest="150"/>
+                                </Frame>
                             </StackLayout>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

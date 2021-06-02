@@ -5,6 +5,7 @@ using System.Text;
 using TourJapanX.Base;
 using TourJapanX.Models;
 using TourJapanX.Services;
+using Xamarin.Forms;
 
 namespace TourJapanX.ViewModels
 {
@@ -38,6 +39,17 @@ namespace TourJapanX.ViewModels
             {
                 this._Fotos = value;
                 OnPropertyChanged("Fotos");
+            }
+        }
+
+        public Command GuargarFavorito
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "FUncioana button", "OK");
+                });
             }
         }
     }

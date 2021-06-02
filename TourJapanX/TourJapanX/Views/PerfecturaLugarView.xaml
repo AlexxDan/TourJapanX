@@ -3,37 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourJapanX.Views.PerfecturaLugarView"
              xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels"
-             xmlns:local="clr-namespace:TourJapanX"
-             >
+             xmlns:local="clr-namespace:TourJapanX">
     <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+       
         <StackLayout x:Name="stackperfectura" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
             , Path=PerfecturaLugarViewModel}">
-            <Label Text="Welcome to Xamarin.Forms!"/>
+            
+            <Label Text="Buscar por perfectura" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
             <StackLayout>
                 <Picker Title="Seleccione una perfectura"
                         ItemsSource="{Binding Perfecturas}"
-                        ItemDisplayBinding="{Binding NombrePerfectura}"
+                        ItemDisplayBinding="{Binding NombrePerfectura}" 
                         FontSize="20"
-                        x:Name="perfecturaSelected"/>
-                <Button Text="Buscar" TextColor="Blue"
+                        x:Name="perfecturaSelected" HorizontalOptions="Center"/>
+                <Button Text="Buscar" 
                     CommandParameter="{Binding Source={x:Reference perfecturaSelected},
                     Path=SelectedItem}" Command="{Binding BindingContext.LugarByPefectura,
-                    Source={x:Reference stackperfectura}}"/>
+                    Source={x:Reference stackperfectura}}" HorizontalOptions="Center"/>
             </StackLayout>
-            <StackLayout>
-                <Label Text="Listado filtrado" TextColor="Red"/>
-                <ListView ItemsSource="{Binding Lugares}">
+            <StackLayout Padding="10">
+                    <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding NombreLugar}" TextColor="Blue" FontSize="20"/>
-                                    <Label Text="Prueba" TextColor="Red"/>
-                                    <Button HorizontalOptions="End"
-                                        CommandParameter="{Binding .}"
-                                        Text="Detalles" Command="{Binding BindingContext.LugarDetails,
-                                    Source={x:Reference stackperfectura}}"
-                                        />
+                                        <Label Text="{Binding NombreLugar}" HorizontalOptions="Start"
+                                       FontSize="20" Grid.Column="0" />
+
+                                        <Image Source="detalles.png" HorizontalOptions="End" Grid.Column="1">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                        Command="{Binding BindingContext.LugarDetails,
+                                    Source={x:Reference stackperfectura}}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                   
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -41,5 +51,6 @@
                 </ListView>
             </StackLayout>
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

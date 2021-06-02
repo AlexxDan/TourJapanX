@@ -3,28 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourJapanX.Views.HomeView">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <CarouselView x:Name="caruselhome">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Image Source="{Binding NombreFoto}" HeightRequest="200"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                <Label Text="Japón, un hermoso país que combina la modernidad junto con varias construcciones antiguas.
-            Muchas personas visitan Japón todos los años , algunos lo visitan por la cultra. Otros
-            por hacer turismo en este país variopinto. Otro lo hacen por la exótica y variada gastronomía."/>
-                <Label Text="Algunas personas  van Japón con un guía hecha por amigo. En otros casos, van en un grupo para donde
-            tiene sus propias guías dentro del grupo. También existen personas que quieren ir,pero no tienen
-            ni conocido que conozca algún lugar, ni van en grupo sino que van donde le guie el viento.
-            Es por eso que lanzamos TourJapan."/>
-                <Label Text="¿Qué es TourJapan?
-            Es un sitio web podrás hacer tu propia guía personalizada de los sitios donde visitar en Japón. Ya
-            sean parque, museos, templos,etc."/>
-            </StackLayout>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView>
+                <StackLayout>
+                    <Label Grid.Row="0"  Text="Tour Japan" FontSize="40" TextColor="LightSkyBlue" Padding="10"
+                           VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <CarouselView x:Name="caruselhome" Grid.Row="1"> 
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame BorderColor="DarkGray"
+                                        HeightRequest="250"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start">
+                                    <Image Source="{Binding NombreFoto}"/>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <StackLayout Grid.Row="2">
+                        <Label FontSize="20" Margin="12,0,10,12" VerticalOptions="Start" HorizontalOptions="Center">Japón, un hermoso país que combina la modernidad junto con varias construcciones antiguas. Muchas personas visitan Japón todos los años , algunos lo visitan por la cultra. Otros por hacer turismo en este país variopinto.Otro lo hacen por la exótica y variada gastronomía.</Label>
+                        <Label FontSize="20" Margin="12,0,10,12" HorizontalOptions="Center">Algunas personas van Japón con un guía hecha por amigo. En otros casos, van en un grupo para donde tiene sus propias guías dentro del grupo. También existen personas que quieren ir, pero no tienen ni conocido que conozca algún lugar, ni van en grupo sino que van donde le guie el viento. Es por eso que lanzamos TourJapan.</Label>
+                        <Label FontSize="20" Margin="12,12,10,12" HorizontalOptions="Center" FontAttributes="Bold">¿Qué es TourJapan?</Label>
+                        <Label FontSize="20" Margin="12,12,10,12" HorizontalOptions="Center">Es un sitio web podrás hacer tu propia guía personalizada de los sitios donde visitar en Japón. Ya sean parque, museos, templos,etc.</Label>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
