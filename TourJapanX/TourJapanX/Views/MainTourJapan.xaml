@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TourJapanX.Views.MainTourJapan">
+             x:Class="TourJapanX.Views.MainTourJapan"
+                   xmlns:customcontrol="clr-namespace:TourJapanX.CustomControls">
     <MasterDetailPage.Master>
         <ContentPage BackgroundColor="LightBlue" Title="Menu">
             <StackLayout Orientation="Vertical">
@@ -12,12 +13,12 @@
                       SeparatorVisibility="Default" BackgroundColor="GhostWhite">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="{Binding Icono}"/>
                                     <Label Text="{Binding Titulo}" FontSize="Medium" TextColor="Black"/>
                                 </StackLayout>
-                            </ViewCell>
+                            </customcontrol:CustomViewCellControl>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

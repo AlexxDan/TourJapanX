@@ -3,13 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourJapanX.Views.PerfecturaLugarView"
              xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels"
+             xmlns:customcontrol="clr-namespace:TourJapanX.CustomControls"
              xmlns:local="clr-namespace:TourJapanX">
     <ContentPage.Content>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+       
        
         <StackLayout x:Name="stackperfectura" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
             , Path=PerfecturaLugarViewModel}">
@@ -31,26 +28,26 @@
                     <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">
                                 <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding NombreLugar}" HorizontalOptions="Start"
+                                    <Label Text="{Binding NombreLugar}" HorizontalOptions="StartAndExpand"
                                        FontSize="20" Grid.Column="0" />
 
-                                        <Image Source="detalles.png" HorizontalOptions="End" Grid.Column="1">
+                                    <Image Source="detalles.png" HorizontalOptions="End" Grid.Column="1">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer CommandParameter="{Binding .}"
                                         Command="{Binding BindingContext.LugarDetails,
                                     Source={x:Reference stackperfectura}}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
-                                   
+
                                 </StackLayout>
-                            </ViewCell>
+                            </customcontrol:CustomViewCellControl>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
         </StackLayout>
-        </Grid>
+   
     </ContentPage.Content>
 </ContentPage>
