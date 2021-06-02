@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.FavoritosView"
+             xmlns:local="clr-namespace:TourJapanX"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+    Path=FavoritosViewModel}"
+             x:Name="PageFavoritosView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tu Sabe" FontSize="25" />
+            <ListView ItemsSource="{Binding Lugares}"  SelectionMode="None" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="80" />
+                            </Grid.RowDefinitions>
+                            <!--<Image Source="{Binding Photo}"  HorizontalOptions="Center" HeightRequest="90" WidthRequest="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />-->
+                            <Label FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="1" Text="{Binding IdLugar}" Grid.Row="0" />
+                            <Label FontSize="Small" VerticalOptions="Start" Grid.Column="1" Text="{Binding NombreLugar}" Grid.Row="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,6 @@
 ﻿using System;
+using TourJapanX.Services;
+using TourJapanX.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,12 +8,22 @@ namespace TourJapanX
 {
     public partial class App : Application
     {
+        private static ServiceIoC _ServiceLocator;
+
+        public static ServiceIoC ServiceLocator
+        {
+            get
+            {
+                return _ServiceLocator = _ServiceLocator ?? new ServiceIoC();
+            }
+        }
+
         public App()
         {
             InitializeComponent();
 
             // MainPage = new MainPage();
-            MainPage = new Views.Login();
+            MainPage = new FavoritosView();
         }
 
         protected override void OnStart()

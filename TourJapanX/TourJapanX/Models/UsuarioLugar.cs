@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TourJapanX.Models
 {
-    public class UsusarioLugar
+    public class UsuarioLugar
     {
         [JsonProperty("idUsuario")]
         public int IdUser { get; set; }

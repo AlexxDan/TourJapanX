@@ -165,10 +165,10 @@ namespace TourJapanX.Services
         #endregion
 
         #region UsuarioLugar
-        public async Task<List<UsusarioLugar>> LugaresGuardadosAsync(int idusuario)
+        public async Task<List<UsuarioLugar>> LugaresGuardadosAsync(int idusuario)
         {
             String request = "api/LugarUsuario/LugaresUsuario/" + idusuario;
-            List<UsusarioLugar> usuarioLugars = await this.CallAPi<List<UsusarioLugar>>(request);
+            List<UsuarioLugar> usuarioLugars = await this.CallAPi<List<UsuarioLugar>>(request);
             return usuarioLugars;
         }
 
@@ -188,7 +188,7 @@ namespace TourJapanX.Services
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
 
-                UsusarioLugar usuarioLugar = new UsusarioLugar();
+                UsuarioLugar usuarioLugar = new UsuarioLugar();
                 usuarioLugar.IdUser = idusuario;
                 usuarioLugar.IdLugar = lugar;
 
@@ -231,6 +231,8 @@ namespace TourJapanX.Services
             return user;
         }
         #endregion
+
+
 
     }
 }

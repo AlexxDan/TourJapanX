@@ -5,7 +5,7 @@
              xmlns:viewmodels="clr-namespace:TourJapanX.ViewModels">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout.BindingContext>
+            <!--<StackLayout.BindingContext>
                 <viewmodels:LugarViewModel/>
             </StackLayout.BindingContext>
             <Label Text="Pueba de algo" FontSize="45" TextColor="Blue"/>
@@ -14,6 +14,8 @@
             <Label Text="{Binding Lugar.NombreLugar}" FontSize="20" TextColor="Red"/>
             <Label Text="{Binding Lugar.TipoLugar}" FontSize="20" TextColor="Blue"/>
             <Label Text="{Binding Lugar.Descripcion}" FontSize="20"/>
+            <Button Text="Desesperado" Command="{Binding MostrarFavoritos}" />-->
+            <Label Text="{Binding Usuario.NickUser}" FontSize="30" TextColor="Red" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
