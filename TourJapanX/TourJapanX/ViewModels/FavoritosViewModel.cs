@@ -60,9 +60,17 @@ namespace TourJapanX.ViewModels
         private async Task CargarUsuarioLugar()
         {
             List<UsuarioLugar> lista =
-                await this.ServiceApi.LugaresGuardadosAsync(3);
+                await this.ServiceApi.LugaresGuardadosAsync
+                (App.ServiceLocator.SessionService.UserSession.IdUser);
             this.UsuarioLugar =
                 new ObservableCollection<UsuarioLugar>(lista);
+        }
+        private async Task<List<UsuarioLugar>> CargarUsuarioLugarFirst()
+        {
+            List<UsuarioLugar> lista =
+                await this.ServiceApi.LugaresGuardadosAsync
+                (App.ServiceLocator.SessionService.UserSession.IdUser);
+            return lista;
         }
 
         public Command EliminarFavorito
@@ -72,8 +80,9 @@ namespace TourJapanX.ViewModels
                 return new Command(async (usuariolugar) =>
                 {
                     Lugar lugar = usuariolugar as Lugar;
-               //     Usuario usuario = App.ServiceLocator.SessionService.UserSession;
-                    await this.ServiceApi.EliminarLugarUsuarioAsync(3, lugar.IdLugar);
+                    Usuario usuario = App.ServiceLocator.SessionService.UserSession;
+
+                    await this.ServiceApi.EliminarLugarUsuarioAsync(usuario.IdUser, lugar.IdLugar);
                     await Application.Current.MainPage.DisplayAlert("Alert", "UsuarioLugar eliminado", "OK");
                 });
             }

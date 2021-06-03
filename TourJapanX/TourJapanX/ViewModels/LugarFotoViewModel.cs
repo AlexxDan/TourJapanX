@@ -5,11 +5,12 @@ using System.Text;
 using TourJapanX.Base;
 using TourJapanX.Models;
 using TourJapanX.Services;
+using TourJapanX.Views;
 using Xamarin.Forms;
 
 namespace TourJapanX.ViewModels
 {
-   public class LugarFotoViewModel : ViewModelBase
+    public class LugarFotoViewModel : ViewModelBase
     {
 
         ServiceApi service;
@@ -64,9 +65,25 @@ namespace TourJapanX.ViewModels
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "FUncioana button", "OK");
+                    Usuario user = App.ServiceLocator.UsuarioViewModel.Usuario;
+                    if (user == null)
+                    {
+                        await Application.Current.MainPage.Navigation.PushModalAsync(new LoginView());
+                    }
+                    else
+                    {
+                        if (await this.service.LugarRegistradoAsync(user.IdUser, this.Lugar.IdLugar))
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Alert", "Este lugar ya está entre tus favoritos", "OK");
+                        }
+                        else
+                        {
+                            await this.service.GuardarLugarUsuarioAsync(user.IdUser, this.Lugar.IdLugar); ;
+                            await Application.Current.MainPage.DisplayAlert("Alert", "Añadido a tus favoritos!", "OK");
+                        }
+                    };
                 });
             }
         }
@@ -78,7 +95,7 @@ namespace TourJapanX.ViewModels
                 return new Command(async () =>
                 {
                     Usuario user = App.ServiceLocator.SessionService.UserSession;
-                   
+
                     await Application.Current.MainPage.DisplayAlert("Alert"
    , "Doctor almacenado", "OK");
 
