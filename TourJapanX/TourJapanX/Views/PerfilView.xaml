@@ -24,7 +24,7 @@
                     <EllipseGeometry Center="75,75" RadiusX="75" RadiusY="75" />
                 </Image.Clip>
             </Image>
-            <Label Text="{Binding NickUser,StringFormat='Nick :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="2" />
+            <Label Text="{Binding Usuario.NickUser,StringFormat='Nick :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="2" />
             <Label Text="{Binding Usuario.Email,StringFormat='Email :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="3" />
             <Button BackgroundColor="#ede61c" Text="Ver Favoritos" TextColor="Black" BorderColor="Black" BorderWidth="2" HorizontalOptions="Center"
                     WidthRequest="200"  Grid.Row="4" CornerRadius="30" Command="{Binding FavoritosUsuario}"/>

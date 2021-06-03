@@ -52,13 +52,16 @@ namespace TourJapanX.Views
         {
             var item = (MasterPageItem)e.SelectedItem;
             var tipo = item.Tipo;
-            //if (App.ServiceLocator.SessionService.UserSession.IdUser == 0 && tipo == typeof(LoginView))
-            //{
-            //    Application.Current.MainPage.Navigation.PushModalAsync(new LoginView());
-            //}
+            if (App.ServiceLocator.SessionService.UserSession.IdUser == 0 && tipo == typeof(PerfilView))
+            {
+                await Navigation.PushModalAsync(new LoginView());
+            }
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(tipo));
             IsPresented = false;
+
+
+
         }
     }
 }

@@ -76,7 +76,7 @@ namespace TourJapanX.ViewModels
                                 SessionService usersession =
                                 App.ServiceLocator.SessionService;
                                 usersession.UserSession = user;
-                               PerfilView view = new PerfilView();
+                                PerfilView view = new PerfilView();
 
                                 // password = 1234
                                 UsuarioViewModel viewmodel =
