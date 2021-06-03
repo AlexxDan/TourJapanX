@@ -11,8 +11,8 @@
         <StackLayout>
             <Label Text="Listado de los lugares" FontSize="30" FontAttributes="Bold"
                    HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
-            <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0" >
-                <ListView.ItemTemplate>
+            <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0">
+                <ListView.ItemTemplate >
                     <DataTemplate>
 
                         <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">

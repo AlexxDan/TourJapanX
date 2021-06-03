@@ -77,6 +77,8 @@ namespace TourJapanX.ViewModels
             {
                 return new Command(async () =>
                 {
+                    Usuario user = App.ServiceLocator.SessionService.UserSession;
+                   
                     await Application.Current.MainPage.DisplayAlert("Alert"
    , "Doctor almacenado", "OK");
 
