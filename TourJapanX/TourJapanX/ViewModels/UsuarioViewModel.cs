@@ -20,7 +20,7 @@ namespace TourJapanX.ViewModels
         public UsuarioViewModel(ServiceApi serviceApi)
         {
             this.ServiceApi = serviceApi;
-
+            
         }
 
         private Usuario _Usuario;

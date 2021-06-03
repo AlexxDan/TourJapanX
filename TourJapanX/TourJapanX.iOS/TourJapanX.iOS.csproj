@@ -157,4 +157,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+  </ItemGroup>
 </Project>

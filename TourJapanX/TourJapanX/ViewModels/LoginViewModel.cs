@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace TourJapanX.ViewModels
 {
-    public class LoginViewModel: ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         private ServiceApi ServiceApi;
 
@@ -63,7 +63,7 @@ namespace TourJapanX.ViewModels
                         //await App.Current.MainPage.DisplayAlert("Algun usuario hay", "Vamoh a buscar", "OK");
                         Usuario user =
                         await this.ServiceApi.Login(userName, password);
-                        if(user == null)
+                        if (user == null)
                         {
                             await App.Current.MainPage.DisplayAlert("Error", "El email o contraseña introducidos son incorrectos", "OK");
 
@@ -76,21 +76,22 @@ namespace TourJapanX.ViewModels
                                 SessionService usersession =
                                 App.ServiceLocator.SessionService;
                                 usersession.UserSession = user;
-                                LugarView view = new LugarView();
+                                HomeView view = new HomeView();
 
                                 // password = 1234
                                 UsuarioViewModel viewmodel =
                                 App.ServiceLocator.UsuariosViewModel;
 
                                 view.BindingContext = viewmodel;
+
                                 viewmodel.Usuario = user;
 
-                                await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                                
                             }
                         }
 
                     }
-                   
+
                 });
             }
         }
