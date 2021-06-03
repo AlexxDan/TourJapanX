@@ -21,7 +21,7 @@ namespace TourJapanX
             InitializeComponent();
 
            
-            MainPage = new Views.FavoritosView();
+            MainPage = new Views.MainTourJapan();
         }
 
         protected override void OnStart()

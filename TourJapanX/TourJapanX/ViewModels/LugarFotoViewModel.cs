@@ -42,6 +42,24 @@ namespace TourJapanX.ViewModels
             }
         }
 
+        private String _Link;
+
+        public String Link
+        {
+            get { return this._Link; }
+            set
+            {
+                this._Link = value;
+                OnPropertyChanged("Link");
+            }
+        }
+
+        private String FormaterName(string nombre)
+        {
+            String formater = nombre.Replace(" ", "+");
+            return formater;
+        }
+
         public Command GuargarFavorito
         {
             get
@@ -62,6 +80,19 @@ namespace TourJapanX.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Alert"
    , "Doctor almacenado", "OK");
 
+                });
+            }
+        }
+
+        public Command TapCommand
+        {
+            get
+            {
+                return new Command((nombre) =>
+                {
+                    String lugarname = FormaterName(this.Lugar.NombreLugar);
+                    String link = "https://www.google.com/maps/search/" + lugarname;
+                    Device.OpenUri(new Uri(link));
                 });
             }
         }
