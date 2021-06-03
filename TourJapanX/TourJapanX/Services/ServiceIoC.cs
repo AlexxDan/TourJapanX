@@ -52,3 +52,42 @@ namespace TourJapanX.Services
 
     }
 }
+
+
+            builder.RegisterType<UsuarioViewModel>();
+            builder.RegisterType<LoginViewModel>();
+            builder.RegisterType<FavoritosViewModel>();
+
+            builder.RegisterType<SessionService>().SingleInstance();
+
+        public FavoritosViewModel FavoritosViewModel
+        {
+            get
+            {
+                return this.container.Resolve<FavoritosViewModel>();
+            }
+        }
+
+        public LoginViewModel LoginViewModel
+        {
+            get
+            {
+                return this.container.Resolve<LoginViewModel>();
+            }
+        }
+
+        public UsuarioViewModel UsuariosViewModel
+        {
+            get
+            {
+                return this.container.Resolve<UsuarioViewModel>();
+            }
+        }
+
+        public SessionService SessionService
+        {
+            get
+            {
+                return this.container.Resolve<SessionService>();
+            }
+        }

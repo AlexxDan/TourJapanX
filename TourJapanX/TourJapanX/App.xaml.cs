@@ -1,5 +1,4 @@
 ﻿using System;
-using TourJapanX.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
