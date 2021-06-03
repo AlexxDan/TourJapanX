@@ -3,17 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourJapanX.Views.FavoritosView"
              xmlns:local="clr-namespace:TourJapanX"
+              xmlns:customcontrol="clr-namespace:TourJapanX.CustomControls"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
     Path=FavoritosViewModel}"
              x:Name="PageFavoritosView">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Favoritos" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
-            <ListView ItemsSource="{Binding Lugares}"  SelectionMode="None" >
+            <ListView ItemsSource="{Binding Lugares}"  SelectionMode="None" Margin="20,0,20,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Grid>
+                        <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">
+                            <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition />
@@ -25,13 +26,14 @@
                             </Grid.RowDefinitions>
                             <!--<Image Source="{Binding Photo}"  HorizontalOptions="Center" HeightRequest="90" WidthRequest="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />-->
                             <!--<Label FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="1" Text="{Binding IdLugar}" Grid.Row="0" />-->
-                                <Label FontSize="Small" VerticalOptions="Start" Grid.Column="0" Text="{Binding NombreLugar}" Grid.Row="0" />
-                                <Button Text="Eliminar" BackgroundColor="Red" TextColor="White" Grid.Column="1" Grid.Row="0"
+                                <Label VerticalOptions="Start" Grid.Column="0" Text="{Binding NombreLugar}" Grid.Row="0" HorizontalOptions="Start"
+                                       FontSize="15" />
+                                <Button Text="Eliminar" BackgroundColor="Red"  HorizontalOptions="End" TextColor="White" Grid.Column="1" Grid.Row="0"
                                         CommandParameter="{Binding .}"
                                         Command="{Binding BindingContext.EliminarFavorito,
                                     Source={x:Reference PageFavoritosView}}"/>
                             </Grid>
-                    </ViewCell>
+                            </customcontrol:CustomViewCellControl>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

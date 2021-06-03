@@ -16,7 +16,10 @@ namespace TourJapanX.ViewModels
         public UsuarioViewModel(ServiceApi service)
         {
             this.service = service;
-            this.CargarUsuario();
+            MessagingCenter.Subscribe<UsuarioViewModel>(this, "RELOAD", async (sender) =>
+            {
+                CargarUsuario();
+            });
         }
 
         private Usuario _Usuario;
@@ -32,7 +35,12 @@ namespace TourJapanX.ViewModels
         }
         public void CargarUsuario()
         {
-            this.Usuario = App.ServiceLocator.SessionService.UserSession;
+            Usuario user = App.ServiceLocator.SessionService.UserSession;
+            if (user!=null)
+            {
+                this.Usuario = user;
+            }
+            
         }
 
         public Command FavoritosUsuario

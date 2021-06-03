@@ -48,13 +48,17 @@ namespace TourJapanX.Views
                         SessionService usersession =
                         App.ServiceLocator.SessionService;
                         usersession.UserSession = user;
+                        MessagingCenter.Send(App.ServiceLocator.UsuarioViewModel, "RELOAD");
+                       
                         // password = 1234
-                        UsuarioViewModel viewmodel = App.ServiceLocator.UsuarioViewModel;
-                        viewmodel.Usuario = user;
+                        //UsuarioViewModel viewmodel = App.ServiceLocator.UsuarioViewModel;
+                        //viewmodel.Usuario = user;
+                        //PerfilView view = new PerfilView();
+                        //view.BindingContext = viewmodel;
+                        //                       Application.Current.MainPage.BindingContext = viewmodel;
 
-                        Application.Current.MainPage.BindingContext = viewmodel;
-                        
                         await Navigation.PopModalAsync();
+                       //await Navigation.PushAsync(view);
                     }
                 }
 

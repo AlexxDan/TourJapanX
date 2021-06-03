@@ -47,53 +47,53 @@ namespace TourJapanX.ViewModels
             }
         }
 
-        public Command LoginCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
-                    {
-                        await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
-                    }
-                    else
-                    {
+//        public Command LoginCommand
+        //{
+        //    get
+        //    {
+        //        return new Command(async () =>
+        //        {
+        //            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+        //            {
+        //                await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+        //            }
+        //            else
+        //            {
 
-                        //await App.Current.MainPage.DisplayAlert("Algun usuario hay", "Vamoh a buscar", "OK");
-                        Usuario user =
-                        await this.ServiceApi.Login(userName, password);
-                        if (user == null)
-                        {
-                            await App.Current.MainPage.DisplayAlert("Error", "El email o contraseña introducidos son incorrectos", "OK");
+        //                //await App.Current.MainPage.DisplayAlert("Algun usuario hay", "Vamoh a buscar", "OK");
+        //                Usuario user =
+        //                await this.ServiceApi.Login(userName, password);
+        //                if (user == null)
+        //                {
+        //                    await App.Current.MainPage.DisplayAlert("Error", "El email o contraseña introducidos son incorrectos", "OK");
 
-                        }
-                        else
-                        {
-                            bool passwordEqual = CypherService.DescifrarContenido(password, user.Salt, user.Password);
-                            if (passwordEqual)
-                            {
-                                SessionService usersession =
-                                App.ServiceLocator.SessionService;
-                                usersession.UserSession = user;
-                                PerfilView view = new PerfilView();
+        //                }
+        //                else
+        //                {
+        //                    bool passwordEqual = CypherService.DescifrarContenido(password, user.Salt, user.Password);
+        //                    if (passwordEqual)
+        //                    {
+        //                        SessionService usersession =
+        //                        App.ServiceLocator.SessionService;
+        //                        usersession.UserSession = user;
+        //                        PerfilView view = new PerfilView();
 
-                                // password = 1234
-                                UsuarioViewModel viewmodel =
-                                App.ServiceLocator.UsuarioViewModel;
+        //                        // password = 1234
+        //                        UsuarioViewModel viewmodel =
+        //                        App.ServiceLocator.UsuarioViewModel;
 
-                                view.BindingContext = viewmodel;
+        //                        view.BindingContext = viewmodel;
 
-                                viewmodel.Usuario = user;
+        //                        viewmodel.Usuario = user;
 
-                                await Application.Current.MainPage.Navigation.PushModalAsync(view);
-                            }
-                        }
+        //                        await Application.Current.MainPage.Navigation.PushModalAsync(view);
+        //                    }
+        //                }
 
-                    }
+        //            }
 
-                });
-            }
-        }
+        //        });
+        //    }
+        //}
     }
 }

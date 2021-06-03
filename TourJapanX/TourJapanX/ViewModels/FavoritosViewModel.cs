@@ -10,29 +10,36 @@ using Xamarin.Forms;
 
 namespace TourJapanX.ViewModels
 {
-    public class FavoritosViewModel: ViewModelBase
+    public class FavoritosViewModel : ViewModelBase
     {
         private ServiceApi ServiceApi;
         public List<Lugar> lugares;
 
         public FavoritosViewModel(ServiceApi serviceApi)
         {
-            
+
             this.ServiceApi = serviceApi;
             lugares = new List<Lugar>();
 
             Task.Run(async () =>
             {
-                await this.CargarUsuarioLugar();
-                foreach (var userLugar in this.UsuarioLugar)
-                {
-                    Lugar lugar = await this.ServiceApi.GetLugarAsync(userLugar.IdLugar);
-                    this.lugares.Add(lugar);
+                //await this.CargarUsuarioLugar();
+                //foreach (var userLugar in this.UsuarioLugar)
+                //{
+                //    Lugar lugar = await this.ServiceApi.GetLugarAsync(userLugar.IdLugar);
+                //    this.lugares.Add(lugar);
 
-                }
-             
-                this.Lugares = new ObservableCollection<Lugar>(lugares);
+                //}
+                await this.RecargarFavoritos();
+
+                //this.Lugares = new ObservableCollection<Lugar>(lugares);
             });
+
+            MessagingCenter.Subscribe<FavoritosViewModel>
+                (this, "RELOAD", async (sender) =>
+                {
+                    await this.RecargarFavoritos();
+                });
         }
 
         private ObservableCollection<Lugar> _Lugares;
@@ -81,11 +88,26 @@ namespace TourJapanX.ViewModels
                 {
                     Lugar lugar = usuariolugar as Lugar;
                     Usuario usuario = App.ServiceLocator.SessionService.UserSession;
-
                     await this.ServiceApi.EliminarLugarUsuarioAsync(usuario.IdUser, lugar.IdLugar);
-                    await Application.Current.MainPage.DisplayAlert("Alert", "UsuarioLugar eliminado", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Lugar favorito eliminado eliminado", "OK");
+                    MessagingCenter.Send(App.ServiceLocator.FavoritosViewModel, "RELOAD");
+
                 });
             }
+        }
+
+        public async Task RecargarFavoritos()
+        {
+            await this.CargarUsuarioLugar();
+            this.lugares.Clear();
+            foreach (var userLugar in this.UsuarioLugar)
+            {
+                Lugar lugar = await this.ServiceApi.GetLugarAsync(userLugar.IdLugar);
+                this.lugares.Add(lugar);
+
+            }
+            this.Lugares = new ObservableCollection<Lugar>(lugares);
+
         }
     }
 }

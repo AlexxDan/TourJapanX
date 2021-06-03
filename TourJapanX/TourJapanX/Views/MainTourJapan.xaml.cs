@@ -55,6 +55,7 @@ namespace TourJapanX.Views
             if (App.ServiceLocator.SessionService.UserSession.IdUser == 0 && tipo == typeof(PerfilView))
             {
                 await Navigation.PushModalAsync(new LoginView());
+               
             }
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(tipo));

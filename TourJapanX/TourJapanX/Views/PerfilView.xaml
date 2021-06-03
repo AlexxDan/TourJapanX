@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:TourJapanX"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
              Path=UsuarioViewModel}">
-    <ContentPage.Content>
-        <Grid>
+    <ContentPage.Content >
+        <StackLayout x:Name="pageperfil">
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -29,5 +30,6 @@
             <Button BackgroundColor="#ede61c" Text="Ver Favoritos" TextColor="Black" BorderColor="Black" BorderWidth="2" HorizontalOptions="Center"
                     WidthRequest="200"  Grid.Row="4" CornerRadius="30" Command="{Binding FavoritosUsuario}"/>
         </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
