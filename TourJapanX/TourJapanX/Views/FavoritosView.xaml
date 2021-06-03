@@ -8,24 +8,29 @@
              x:Name="PageFavoritosView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tu Sabe" FontSize="25" />
+            <Label Text="Favoritos" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
             <ListView ItemsSource="{Binding Lugares}"  SelectionMode="None" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="75" />
                                 <ColumnDefinition />
+                                <ColumnDefinition />
+                                
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="80" />
+                                <!--<RowDefinition Height="20" />-->
+                                <RowDefinition  />
                             </Grid.RowDefinitions>
                             <!--<Image Source="{Binding Photo}"  HorizontalOptions="Center" HeightRequest="90" WidthRequest="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />-->
-                            <Label FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="1" Text="{Binding IdLugar}" Grid.Row="0" />
-                            <Label FontSize="Small" VerticalOptions="Start" Grid.Column="1" Text="{Binding NombreLugar}" Grid.Row="1" />
-                        </Grid>
+                            <!--<Label FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="1" Text="{Binding IdLugar}" Grid.Row="0" />-->
+                                <Label FontSize="Small" VerticalOptions="Start" Grid.Column="0" Text="{Binding NombreLugar}" Grid.Row="0" />
+                                <Button Text="Eliminar" BackgroundColor="Red" TextColor="White" Grid.Column="1" Grid.Row="0"
+                                        CommandParameter="{Binding UsuarioLugar}"
+                                        Command="{Binding BindingContext.EliminarFavorito,
+                                    Source={x:Reference PageFavoritosView}}"/>
+                            </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

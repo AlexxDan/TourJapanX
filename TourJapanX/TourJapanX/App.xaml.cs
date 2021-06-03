@@ -22,7 +22,7 @@ namespace TourJapanX
         {
             InitializeComponent();
 
-             MainPage = new Views.MainTourJapan();
+             MainPage = new LoginView();
         }
 
         protected override void OnStart()
