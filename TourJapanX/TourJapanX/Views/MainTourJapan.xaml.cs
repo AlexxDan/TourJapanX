@@ -43,11 +43,15 @@ namespace TourJapanX.Views
             this.listviewMenu.ItemSelected += ListviewMenu_ItemSelected;
         }
 
-        private void ListviewMenu_ItemSelected(object sender
+        private async void ListviewMenu_ItemSelected(object sender
             , SelectedItemChangedEventArgs e)
         {
             var item = (MasterPageItem)e.SelectedItem;
             var tipo = item.Tipo;
+            if (App.ServiceLocator.SessionService.UserSession.IdUser == 0 && tipo == typeof(PerfilView))
+            {
+                await Navigation.PushModalAsync(new LoginView());
+            }
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(tipo));
             IsPresented = false;

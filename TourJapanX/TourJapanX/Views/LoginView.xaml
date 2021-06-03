@@ -31,7 +31,9 @@
                 </Frame>
             </Grid>
             <Grid Grid.Row="3">
-                <Button Command="{Binding BindingContext.LoginCommand, Source={x:Reference PageLoginView}}" Text="Login" TextColor="Cornsilk"
+                <Button Command="{Binding BindingContext.LoginCommand, Source={x:Reference PageLoginView}}"
+                        x:Name="btnLogin"
+                        Text="Login" TextColor="Cornsilk"
                         FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
                         BackgroundColor="DarkRed" />
             </Grid>
