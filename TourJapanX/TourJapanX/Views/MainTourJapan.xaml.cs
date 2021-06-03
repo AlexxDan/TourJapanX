@@ -18,6 +18,7 @@ namespace TourJapanX.Views
             InitializeComponent();
             ObservableCollection<MasterPageItem> menu = new ObservableCollection<MasterPageItem>();
 
+
             MasterPageItem lugarscroll = new MasterPageItem
             {
                 Titulo = "Lista lugares",
@@ -33,13 +34,16 @@ namespace TourJapanX.Views
                 Icono = "perfectura2.png"
             };
             menu.Add(perfecturas);
-
+            MasterPageItem perfil = new MasterPageItem
+            {
+                Titulo = "Mi Perfil",
+                Tipo = typeof(PerfilView),
+                Icono = "user.png"
+            };
+            menu.Add(perfil);
             this.listviewMenu.ItemsSource = menu;
-
-
             Detail = new NavigationPage((Page)
-                Activator.CreateInstance(typeof(HomeView)));
-
+    Activator.CreateInstance(typeof(HomeView)));
             this.listviewMenu.ItemSelected += ListviewMenu_ItemSelected;
         }
 
@@ -48,6 +52,10 @@ namespace TourJapanX.Views
         {
             var item = (MasterPageItem)e.SelectedItem;
             var tipo = item.Tipo;
+            //if (App.ServiceLocator.SessionService.UserSession.IdUser == 0 && tipo == typeof(LoginView))
+            //{
+            //    Application.Current.MainPage.Navigation.PushModalAsync(new LoginView());
+            //}
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(tipo));
             IsPresented = false;
