@@ -67,7 +67,7 @@ namespace TourJapanX.ViewModels
             {
                 return new Command(async () =>
                 {
-                    Usuario user = App.ServiceLocator.UsuariosViewModel.Usuario;
+                    Usuario user = App.ServiceLocator.UsuarioViewModel.Usuario;
                     if (user == null)
                     {
                         await Application.Current.MainPage.Navigation.PushModalAsync(new LoginView());

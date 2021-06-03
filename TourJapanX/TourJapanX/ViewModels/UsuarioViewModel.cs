@@ -1,29 +1,26 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
-using System.Threading.Tasks;
 using TourJapanX.Base;
 using TourJapanX.Models;
 using TourJapanX.Services;
-using Xamarin.Forms;
 using TourJapanX.Views;
-using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
+using Xamarin.Forms;
 
 namespace TourJapanX.ViewModels
 {
-    public class UsuarioViewModel : ViewModelBase
+    public class UsuarioViewModel:ViewModelBase
     {
-        ServiceApi ServiceApi;
-
-        public UsuarioViewModel(ServiceApi serviceApi)
+        ServiceApi service;
+        public UsuarioViewModel(ServiceApi service)
         {
-            this.ServiceApi = serviceApi;
-            CargarUsuarioSess();
+            this.service = service;
+            this.CargarUsuario();
         }
 
         private Usuario _Usuario;
+
         public Usuario Usuario
         {
             get { return this._Usuario; }
@@ -33,32 +30,28 @@ namespace TourJapanX.ViewModels
                 OnPropertyChanged("Usuario");
             }
         }
-
-        private void CargarUsuarioSess()
+        public void CargarUsuario()
         {
-            Usuario user = App.ServiceLocator.SessionService.UserSession;
-
-            this.Usuario = user;
+            this.Usuario = App.ServiceLocator.SessionService.UserSession;
         }
-
-
-
 
         public Command FavoritosUsuario
         {
             get
             {
-                return new Command(async () =>
+                return new Command(async() =>
                 {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "Deberia ir a ", "OK");
-                    //FavoritosViewModel viewmodel = App.ServiceLocator.FavoritosViewModel;
-                   
-                    //FavoritosView view=new FavoritosView();
-                    //await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                    //await Application.Current.MainPage.DisplayAlert("Alert", "Activado", "OK");
+
+
+                    FavoritosViewModel viewModel = App.ServiceLocator.FavoritosViewModel;
+
+                    FavoritosView view = new FavoritosView();
+                      view.BindingContext = viewModel;
+
+                      await Application.Current.MainPage.Navigation.PushModalAsync(view);
                 });
             }
         }
-
-
     }
 }

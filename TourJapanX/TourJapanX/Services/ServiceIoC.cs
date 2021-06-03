@@ -21,7 +21,7 @@ namespace TourJapanX.Services
             builder.RegisterType<PerfecturaLugarViewModel>();
             builder.RegisterType<LugarFotoViewModel>();
             builder.RegisterType<LugaresViewModel>();
-            
+
             builder.RegisterType<UsuarioViewModel>();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<FavoritosViewModel>();
@@ -73,14 +73,6 @@ namespace TourJapanX.Services
             }
         }
 
-        public UsuarioViewModel UsuariosViewModel
-        {
-            get
-            {
-                return this.container.Resolve<UsuarioViewModel>();
-            }
-        }
-
         public SessionService SessionService
         {
             get
@@ -88,6 +80,15 @@ namespace TourJapanX.Services
                 return this.container.Resolve<SessionService>();
             }
         }
+
+        public UsuarioViewModel UsuarioViewModel
+        {
+            get
+            {
+                return this.container.Resolve<UsuarioViewModel>();
+            }
+        }
+
 
     }
 }

@@ -65,6 +65,13 @@ namespace TourJapanX.ViewModels
             this.UsuarioLugar =
                 new ObservableCollection<UsuarioLugar>(lista);
         }
+        private async Task<List<UsuarioLugar>> CargarUsuarioLugarFirst()
+        {
+            List<UsuarioLugar> lista =
+                await this.ServiceApi.LugaresGuardadosAsync
+                (App.ServiceLocator.SessionService.UserSession.IdUser);
+            return lista;
+        }
 
         public Command EliminarFavorito
         {

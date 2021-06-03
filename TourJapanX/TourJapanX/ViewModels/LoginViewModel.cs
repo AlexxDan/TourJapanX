@@ -76,17 +76,17 @@ namespace TourJapanX.ViewModels
                                 SessionService usersession =
                                 App.ServiceLocator.SessionService;
                                 usersession.UserSession = user;
-                                HomeView view = new HomeView();
+                               PerfilView view = new PerfilView();
 
                                 // password = 1234
                                 UsuarioViewModel viewmodel =
-                                App.ServiceLocator.UsuariosViewModel;
+                                App.ServiceLocator.UsuarioViewModel;
 
                                 view.BindingContext = viewmodel;
 
                                 viewmodel.Usuario = user;
 
-                                
+                                await Application.Current.MainPage.Navigation.PushModalAsync(view);
                             }
                         }
 

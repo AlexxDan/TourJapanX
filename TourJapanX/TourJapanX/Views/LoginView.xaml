@@ -7,6 +7,9 @@
     Path=LoginViewModel}"
              x:Name="PageLoginView">
     <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LOGIN" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="20"/>
         <Grid Padding="30" RowSpacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -14,27 +17,23 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <BoxView HeightRequest="10" />
-            </Grid>
-            <Grid Grid.Row="1">
-                <Label Text="LOGIN" FontSize="25" WidthRequest="300" />
-            </Grid>
-            <Grid Grid.Row="2" WidthRequest="500">
-                <Frame HasShadow="True" BorderColor="DarkRed">
+             
+                <Grid Grid.Row="1" WidthRequest="500">
+                <Frame HasShadow="True" BorderColor="LightBlue">
                     <StackLayout Orientation="Vertical" Spacing="10">
-                        <Entry x:Name="UserName" Text="{Binding UserName}" TextColor="DarkRed" Placeholder="UserName" PlaceholderColor="Gray"
+                        <Entry x:Name="UserName" Text="{Binding UserName}" TextColor="Blue" Placeholder="UserName" PlaceholderColor="Gray"
                                HeightRequest="40" />
-                        <Entry x:Name="Password" Text="{Binding Password}" TextColor="DarkRed" Placeholder="Password" PlaceholderColor="Gray"
+                        <Entry x:Name="Password" Text="{Binding Password}" TextColor="Blue" Placeholder="Password" PlaceholderColor="Gray"
                                HeightRequest="40" IsPassword="True" />
                     </StackLayout>
                 </Frame>
             </Grid>
             <Grid Grid.Row="3">
-                <Button Command="{Binding BindingContext.LoginCommand, Source={x:Reference PageLoginView}}" Text="Login" TextColor="Cornsilk"
+                <Button Command="{Binding BindingContext.LoginCommand, Source={x:Reference PageLoginView}}" Text="Login" TextColor="Black"
                         FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
-                        BackgroundColor="DarkRed" />
+                        BackgroundColor="LightBlue" />
             </Grid>
         </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

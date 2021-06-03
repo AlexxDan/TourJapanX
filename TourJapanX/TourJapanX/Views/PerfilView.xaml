@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:TourJapanX.Models"
              xmlns:local="clr-namespace:TourJapanX"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
-    Path=UsuarioViewModel}">
+             Path=UsuarioViewModel}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,15 +19,15 @@
             </Grid.RowDefinitions>
             <Label Text="Mi Perfil" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
             <Image Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" WidthRequest="150" 
-                    HeightRequest="150" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png">
+                    HeightRequest="150" Source="{Binding Usuario.Foto}" >
                 <Image.Clip>
-                    <EllipseGeometry Center="75,75" RadiusX="75" RadiusY="75"/>
+                    <EllipseGeometry Center="75,75" RadiusX="75" RadiusY="75" />
                 </Image.Clip>
             </Image>
-            <Label Text="{Binding Usuario.NickUser}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="2" />
-            <Label Text="{Binding}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="3" />
+            <Label Text="{Binding NickUser,StringFormat='Nick :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="2" />
+            <Label Text="{Binding Usuario.Email,StringFormat='Email :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="3" />
             <Button BackgroundColor="#ede61c" Text="Ver Favoritos" TextColor="Black" BorderColor="Black" BorderWidth="2" HorizontalOptions="Center"
-                    WidthRequest="200"  Grid.Row="4" CornerRadius="30" Command="{Binding Usuario.FavoritosUsuario}"/>
+                    WidthRequest="200"  Grid.Row="4" CornerRadius="30" Command="{Binding FavoritosUsuario}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
