@@ -1,4 +1,5 @@
 ﻿using System;
+using TourJapanX.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,8 +20,8 @@ namespace TourJapanX
         {
             InitializeComponent();
 
-            // MainPage = new MainPage();
-            MainPage = new Views.MainTourJapan();
+           
+            MainPage = new Views.FavoritosView();
         }
 
         protected override void OnStart()

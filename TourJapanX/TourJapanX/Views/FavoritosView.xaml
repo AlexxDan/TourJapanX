@@ -27,7 +27,7 @@
                             <!--<Label FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Column="1" Text="{Binding IdLugar}" Grid.Row="0" />-->
                                 <Label FontSize="Small" VerticalOptions="Start" Grid.Column="0" Text="{Binding NombreLugar}" Grid.Row="0" />
                                 <Button Text="Eliminar" BackgroundColor="Red" TextColor="White" Grid.Column="1" Grid.Row="0"
-                                        CommandParameter="{Binding UsuarioLugar}"
+                                        CommandParameter="{Binding .}"
                                         Command="{Binding BindingContext.EliminarFavorito,
                                     Source={x:Reference PageFavoritosView}}"/>
                             </Grid>

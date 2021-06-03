@@ -30,7 +30,7 @@ namespace TourJapanX.ViewModels
                     this.lugares.Add(lugar);
 
                 }
-                //List<int> idlugaresista = (IEnumerable<List<UsuarioLugar>>)this.UsuarioLugar.Select(z => z.IdLugar).ToList();
+             
                 this.Lugares = new ObservableCollection<Lugar>(lugares);
             });
         }
@@ -71,8 +71,9 @@ namespace TourJapanX.ViewModels
             {
                 return new Command(async (usuariolugar) =>
                 {
-                    UsuarioLugar userlugar = usuariolugar as UsuarioLugar;
-                    //await this.ServiceApi.EliminarLugarUsuarioAsync(); Traer el usuario
+                    Lugar lugar = usuariolugar as Lugar;
+               //     Usuario usuario = App.ServiceLocator.SessionService.UserSession;
+                    await this.ServiceApi.EliminarLugarUsuarioAsync(3, lugar.IdLugar);
                     await Application.Current.MainPage.DisplayAlert("Alert", "UsuarioLugar eliminado", "OK");
                 });
             }
