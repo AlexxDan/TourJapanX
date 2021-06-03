@@ -20,8 +20,8 @@ namespace TourJapanX
         {
             InitializeComponent();
 
-            // MainPage = new MainPage();
-            MainPage = new Views.PerfilView();
+           
+            MainPage = new Views.MainTourJapan();
         }
 
         protected override void OnStart()

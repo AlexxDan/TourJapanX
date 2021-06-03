@@ -24,6 +24,7 @@ namespace TourJapanX.Services
             builder.RegisterType<UsuarioViewModel>();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<FavoritosViewModel>();
+            
 
             builder.RegisterType<SessionService>().SingleInstance();
 

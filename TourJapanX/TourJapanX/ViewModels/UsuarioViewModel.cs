@@ -20,7 +20,7 @@ namespace TourJapanX.ViewModels
         public UsuarioViewModel(ServiceApi serviceApi)
         {
             this.ServiceApi = serviceApi;
-           
+
         }
 
         private Usuario _Usuario;
@@ -36,39 +36,26 @@ namespace TourJapanX.ViewModels
 
 
 
-        //public string Email { get; set; }
-        //public string Password { get; set; }
 
-        ////public
 
-        //public Command Login
-        //{
-        //    get
-        //    {
-        //        return new Command(async () =>
-        //        {
-               
-        //            await Application.Current.MainPage.DisplayAlert("Alert"
-        //                , "Doctor almacenado", "OK");
-        //        //Usuario user = await this.Service.Login(this.Email, this.Password);
-        //        //if (user == null)
-        //        //{
-        //        //    await Application.Current.MainPage.DisplayAlert(
-        //        //        "Error",
-        //        //        "La contraseña o email son incorrectos",
-        //        //        "OK");
-        //        //    return;
-        //        //}
-        //        //else
-        //        //{
-        //        //    await Application.Current.MainPage.DisplayAlert(
-        //        //        "Correcto",
-        //        //        "Existe el usuario",
-        //        //        "OK");
-        //            //}
-        //        });
-        //    }
-        //}
+        public Command FavoritosUsuario
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+
+                    Usuario user = App.ServiceLocator.SessionService.UserSession;
+                    //if (user != null)
+                    //{
+                    //    this.Usuario = user;
+                    //}
+                    FavoritosViewModel viewmodel = App.ServiceLocator.FavoritosViewModel;
+                    
+                    
+                });
+            }
+        }
 
 
     }
