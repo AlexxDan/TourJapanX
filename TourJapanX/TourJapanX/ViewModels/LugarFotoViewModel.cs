@@ -52,5 +52,18 @@ namespace TourJapanX.ViewModels
                 });
             }
         }
+
+        public Command MostrarFavoritos
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert"
+   , "Doctor almacenado", "OK");
+
+                });
+            }
+        }
     }
 }
