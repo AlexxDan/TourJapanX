@@ -11,7 +11,15 @@ namespace TourJapanX.Services
 
         public SessionService()
         {
-            this.UserSession = new Usuario();
+            //this.UserSession = new Usuario();
+            this.UserSession = new Usuario()
+            {
+                IdUser=1,
+                NickUser= "Prueba",
+                Email= "prueba@gmail.com",
+                Foto= "https://bucket-tourjapan-ans.s3.amazonaws.com/user/default.png"
+            };
+          
         }
     }
 }

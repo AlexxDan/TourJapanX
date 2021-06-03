@@ -21,6 +21,7 @@ namespace TourJapanX.Services
             builder.RegisterType<PerfecturaLugarViewModel>();
             builder.RegisterType<LugarFotoViewModel>();
             builder.RegisterType<LugaresViewModel>();
+            
             builder.RegisterType<UsuarioViewModel>();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<FavoritosViewModel>();

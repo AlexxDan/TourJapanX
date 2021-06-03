@@ -20,7 +20,7 @@ namespace TourJapanX.ViewModels
         public UsuarioViewModel(ServiceApi serviceApi)
         {
             this.ServiceApi = serviceApi;
-
+            CargarUsuarioSess();
         }
 
         private Usuario _Usuario;
@@ -34,6 +34,12 @@ namespace TourJapanX.ViewModels
             }
         }
 
+        private void CargarUsuarioSess()
+        {
+            Usuario user = App.ServiceLocator.SessionService.UserSession;
+
+            this.Usuario = user;
+        }
 
 
 
@@ -44,15 +50,11 @@ namespace TourJapanX.ViewModels
             {
                 return new Command(async () =>
                 {
-
-                    Usuario user = App.ServiceLocator.SessionService.UserSession;
-                    //if (user != null)
-                    //{
-                    //    this.Usuario = user;
-                    //}
-                    FavoritosViewModel viewmodel = App.ServiceLocator.FavoritosViewModel;
-                    
-                    
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Deberia ir a ", "OK");
+                    //FavoritosViewModel viewmodel = App.ServiceLocator.FavoritosViewModel;
+                   
+                    //FavoritosView view=new FavoritosView();
+                    //await Application.Current.MainPage.Navigation.PushModalAsync(view);
                 });
             }
         }
