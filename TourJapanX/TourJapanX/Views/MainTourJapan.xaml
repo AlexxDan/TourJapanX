@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.MainTourJapan"
+                   xmlns:customcontrol="clr-namespace:TourJapanX.CustomControls">
+    <MasterDetailPage.Master>
+        <ContentPage BackgroundColor="LightBlue" Title="Menu">
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="White" HeightRequest="100">
+                    <Image Source="favlogo.png" HeightRequest="100"/>
+                </StackLayout>
+                <ListView x:Name="listviewMenu" RowHeight="60"
+                      SeparatorVisibility="Default" BackgroundColor="GhostWhite">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="{Binding Icono}"/>
+                                    <Label Text="{Binding Titulo}" FontSize="Medium" TextColor="Black"/>
+                                </StackLayout>
+                            </customcontrol:CustomViewCellControl>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

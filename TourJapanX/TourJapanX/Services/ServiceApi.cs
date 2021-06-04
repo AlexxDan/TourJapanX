@@ -20,7 +20,6 @@ namespace TourJapanX.Services
             this.Header = new MediaTypeWithQualityHeaderValue("application/json");
         }
 
-
         #region CallAPI
         private async Task<T> CallAPi<T>(String request)
         {
@@ -34,9 +33,7 @@ namespace TourJapanX.Services
 
                 if (repsonse.IsSuccessStatusCode)
                 {
-                    //T data = await repsonse.Content.ReadAsAsync<T>();
-                    //return data;
-
+                    
                     var data = await repsonse.Content.ReadAsStringAsync();
                     T dataformater = JsonConvert.DeserializeObject<T>(data);
                     return dataformater;
@@ -100,6 +97,12 @@ namespace TourJapanX.Services
         #endregion
 
         #region Lugar
+        public async Task<List<Lugar>> GetAllLugaresAsync()
+        {
+            String request = "api/Lugar";
+            List<Lugar> lugares = await this.CallAPi<List<Lugar>>(request);
+            return lugares;
+        }
         public async Task<Lugar> GetLugarAsync(int idlugar)
         {
             String request = "api/Lugar/" + idlugar;
@@ -165,10 +168,10 @@ namespace TourJapanX.Services
         #endregion
 
         #region UsuarioLugar
-        public async Task<List<UsusarioLugar>> LugaresGuardadosAsync(int idusuario)
+        public async Task<List<UsuarioLugar>> LugaresGuardadosAsync(int idusuario)
         {
             String request = "api/LugarUsuario/LugaresUsuario/" + idusuario;
-            List<UsusarioLugar> usuarioLugars = await this.CallAPi<List<UsusarioLugar>>(request);
+            List<UsuarioLugar> usuarioLugars = await this.CallAPi<List<UsuarioLugar>>(request);
             return usuarioLugars;
         }
 
@@ -188,7 +191,7 @@ namespace TourJapanX.Services
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
 
-                UsusarioLugar usuarioLugar = new UsusarioLugar();
+                UsuarioLugar usuarioLugar = new UsuarioLugar();
                 usuarioLugar.IdUser = idusuario;
                 usuarioLugar.IdLugar = lugar;
 
@@ -216,6 +219,23 @@ namespace TourJapanX.Services
         }
 
         #endregion
+
+        #region Usuario
+        public async Task<Usuario> Login(string email, string password)
+        {
+            String request = "api/Usuario/BuscarUsuarioLogin/" + email;
+            Usuario user = await this.CallAPi<Usuario>(request);
+            
+            //if(user == null)
+            //{
+
+            //}
+            
+            return user;
+        }
+        #endregion
+
+
 
     }
 }

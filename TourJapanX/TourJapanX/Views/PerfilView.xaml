@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.PerfilView"
+             xmlns:viewmodel="clr-namespace:TourJapanX.Models"
+             xmlns:local="clr-namespace:TourJapanX"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+             Path=UsuarioViewModel}">
+    <ContentPage.Content >
+        <StackLayout x:Name="pageperfil">
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+            <Label Text="Mi Perfil" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
+            <Image Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" WidthRequest="150" 
+                    HeightRequest="150" Source="{Binding Usuario.Foto}" >
+                <Image.Clip>
+                    <EllipseGeometry Center="75,75" RadiusX="75" RadiusY="75" />
+                </Image.Clip>
+            </Image>
+            <Label Text="{Binding Usuario.NickUser,StringFormat='Nick :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="2" />
+            <Label Text="{Binding Usuario.Email,StringFormat='Email :{0}'}" TextColor="Black" HorizontalOptions="CenterAndExpand" FontSize="25" Grid.Row="3" />
+            <Button BackgroundColor="#ede61c" Text="Ver Favoritos" TextColor="Black" BorderColor="Black" BorderWidth="2" HorizontalOptions="Center"
+                    WidthRequest="200"  Grid.Row="4" CornerRadius="30" Command="{Binding FavoritosUsuario}"/>
+        </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

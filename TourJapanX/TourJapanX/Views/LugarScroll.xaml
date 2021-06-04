@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.LugarScroll"
+              xmlns:local="clr-namespace:TourJapanX"
+             xmlns:customcontrol="clr-namespace:TourJapanX.CustomControls"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
+            , Path=LugaresViewModel}" x:Name="PageScroll"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Listado de los lugares" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="10"/>
+            <ListView ItemsSource="{Binding Lugares}" Margin="14,0,14,0">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+
+                        <customcontrol:CustomViewCellControl SelectedItemBackgroundColor="Gray">
+
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                              
+                                    <Label Text="{Binding NombreLugar}" HorizontalOptions="StartAndExpand"
+                                       FontSize="20" Grid.Column="0"/>
+                                    <Image Source="detalles.png" HorizontalOptions="End" Grid.Column="1">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                        Command="{Binding BindingContext.LugarDetails,
+                                    Source={x:Reference PageScroll}}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+
+                        </customcontrol:CustomViewCellControl>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

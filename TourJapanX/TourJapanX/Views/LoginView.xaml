@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourJapanX.Views.LoginView"
+             xmlns:local="clr-namespace:TourJapanX"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+    Path=LoginViewModel}"
+             x:Name="PageLoginView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LOGIN" FontSize="30" FontAttributes="Bold"
+                   HorizontalOptions="Center" TextColor="LightSkyBlue" Padding="20"/>
+            <Grid Padding="30" RowSpacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1" WidthRequest="500">
+                    <Frame HasShadow="True" BorderColor="LightBlue">
+                        <StackLayout Orientation="Vertical" Spacing="10">
+                            <Entry x:Name="UserName" Text="{Binding UserName}" TextColor="Blue" Placeholder="UserName" PlaceholderColor="Gray"
+                               HeightRequest="40" />
+                            <Entry x:Name="Password" Text="{Binding Password}" TextColor="Blue" Placeholder="Password" PlaceholderColor="Gray"
+                               HeightRequest="40" IsPassword="True" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Button 
+                    Text="Login" TextColor="Black"
+                        x:Name="btnLogin"  FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
+                        BackgroundColor="LightBlue" />
+                    <!--Command="{Binding BindingContext.LoginCommand, Source={x:Reference PageLoginView}}"-->
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
